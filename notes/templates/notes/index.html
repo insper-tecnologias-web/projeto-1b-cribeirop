@@ -2,21 +2,27 @@
 {% load static %}
 
 {% block content %}
-<img src="{% static 'notes/img/logo-getit.png' %}" />
-<p>Como o Post-it, mas com outro verbo</p>
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
 
-<form method="post">
+<main class="container">
+  <form class="form-card" method="post">
     {% csrf_token %}
-    <label for="titulo">Título</label>
-    <input id="titulo" type="text" name="titulo" />
-    <label for="detalhes">Detalhes</label>
-    <textarea id="detalhes" name="detalhes"></textarea>
-    <input type="submit" />
+    <!-- <label for="titulo">Título</label> -->
+    <input class="form-card-title" type="text" name="titulo" placeholder="Título"/>
+    <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo..."></textarea>      <input type="submit" />
+    <button class="btn" type="submit">Criar</button>
   </form>
-
-<ul>
+  <div class="card-container">
     {% for note in notes %}
-    <li>{{ note.title }}</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+    <div class="card">
+      <h3 class="card-title">{{ note.title }}</h3>
+      <div class="card-content">
+        <p>{{note.content}}</p>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</main>
