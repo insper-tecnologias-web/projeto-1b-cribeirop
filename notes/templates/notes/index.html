@@ -17,9 +17,13 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">{{note.title}}</h3>
-        <button type="submit" name="delete" class="btn-delete">
-          <img src="{% static 'notes/img/lixo.png' %}" class="lixo"/>
-        </button>
+        <form method="post">
+          <input type="hidden" name="verb" value="delete"/>
+          <input type="hidden" name="titulo" value="{{note.title}}"/>
+          <button type="submit" class="btn-delete">
+            <img src="{% static 'notes/img/lixo.png' %}" class="lixo"/>
+          </button>
+        </form>
       </div>
       <div class="card-main">
         <p>{{note.content}}</p>
