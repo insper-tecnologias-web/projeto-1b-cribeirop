@@ -1,12 +1,10 @@
 {% extends "notes/base.html" %}
 {% load static %}
-
 {% block content %}
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
   <span class="subtitle">Como o Post-it, mas com outro verbo</span>
 </div>
-
 <main class="container">
   <form class="form-card" method="post">
     {% csrf_token %}
@@ -17,8 +15,13 @@
   <div class="card-container">
     {% for note in notes %}
     <div class="card">
-      <h3 class="card-title">{{ note.title }}</h3>
-      <div class="card-content">
+      <div class="card-header">
+        <h3 class="card-title">{{note.title}}</h3>
+        <button type="submit" name="delete" class="btn-delete">
+          <img src="{% static 'notes/img/lixo.png' %}" class="lixo"/>
+        </button>
+      </div>
+      <div class="card-main">
         <p>{{note.content}}</p>
       </div>
     </div>
