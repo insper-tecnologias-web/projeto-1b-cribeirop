@@ -22,9 +22,11 @@ def index(request):
             #         db.delete(note.id)
             #         break
             id = request.POST.get('id')
-            note = Note.objects.get(id=id)
-            note.delete()
-            db.delete(id)
+            for note in Note.objects.all():
+                if id == note.id:
+                    note.delete()
+                    db.delete(note.id)
+                    break
     else:
         all_notes = Note.objects.all()
         return render(request, 'notes/index.html', {'notes': all_notes})
