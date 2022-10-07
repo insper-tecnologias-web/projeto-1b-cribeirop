@@ -18,7 +18,7 @@ def index(request):
             title = request.POST.get('titulo')
             for note in Note.objects.all():
                 if note.title == title:
-                    note.delete(note.id)
+                    note.delete()
                     db.delete(note.id)
                     break
     else:
