@@ -19,6 +19,7 @@
       <div class="card-header">
         <h3 class="card-title">{{note.title}}</h3>
         <form method="post">
+          {% csrf_token %}
           <input type="hidden" name="verb" value="delete"/>
           <input type="hidden" name="titulo" value="{{note.title}}"/>
           <button type="submit" class="btn-delete">
