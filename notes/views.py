@@ -18,8 +18,9 @@ def index(request):
             title = request.POST.get('titulo')
             for note in Note.objects.all():
                 if note.title == title:
-                    id = note.id
-                    note.delete(id)
+                    note.delete(note.id)
+                    db.delete(note.id)
+                    break
     else:
         all_notes = Note.objects.all()
         return render(request, 'notes/index.html', {'notes': all_notes})
