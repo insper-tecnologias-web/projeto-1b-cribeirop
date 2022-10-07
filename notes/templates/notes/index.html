@@ -21,7 +21,8 @@
         <form method="post">
           {% csrf_token %}
           <input type="hidden" name="verb" value="delete"/>
-          <input type="hidden" name="titulo" value="{{note.title}}"/>
+          <!-- <input type="hidden" name="titulo" value="{{note.title}}"/> -->
+          <input type="hidden" name="id" value="{{note.id}}"/>
           <button type="submit" class="btn-delete">
             <img src="{% static 'notes/img/lixo.png' %}" class="lixo"/>
           </button>
