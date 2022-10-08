@@ -21,17 +21,17 @@ def index(request):
             #         note.delete()
             #         # db.delete(note.id)
             #         return redirect('index')
-            # id = request.POST.get('id')
-            # for note in Note.objects.all():
-            #     if note.title == title:
-            #         note.delete()
-            #         # db.delete(note.id)
-            #         return redirect('index')
             id = request.POST.get('id')
-            note = Note.objects.get(id=id)
-            note.delete()
-            db.delete(note.id)
-            return redirect('index')
+            for note in Note.objects.all():
+                if note.id == id:
+                    note.delete()
+                    # db.delete(note.id)
+                    return redirect('index')
+            # id = request.POST.get('id')
+            # note = Note.objects.get(id=id)
+            # note.delete()
+            # # db.delete(note.id)
+            # return redirect('index')
             
     else:
         all_notes = Note.objects.all()
