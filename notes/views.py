@@ -21,6 +21,12 @@ def index(request):
             #         note.delete()
             #         # db.delete(note.id)
             #         return redirect('index')
+            # id = request.POST.get('id')
+            # for note in Note.objects.all():
+            #     if note.title == title:
+            #         note.delete()
+            #         # db.delete(note.id)
+            #         return redirect('index')
             id = request.POST.get('id')
             note = Note.objects.get(id=id)
             note.delete()
@@ -29,4 +35,5 @@ def index(request):
             
     else:
         all_notes = Note.objects.all()
-        return render(request, 'notes/index.html', {'notes': all_notes})
+        quantidade = len(all_notes)
+        return render(request, 'notes/index.html', {'notes': all_notes, 'quantidade': quantidade})
