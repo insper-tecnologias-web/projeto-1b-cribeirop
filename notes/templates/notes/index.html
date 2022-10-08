@@ -4,7 +4,6 @@
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
   <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-  <span class="qtd">{{quantidade}} notas cadastradas</span>
 </div>
 <main class="container">
   <form class="form-card" method="post">
@@ -22,8 +21,7 @@
         <form method="post">
           {% csrf_token %}
           <input type="hidden" name="verb" value="delete"/>
-          <!-- <input type="hidden" name="titulo" value="{{note.title}}"/> -->
-          <input type="hidden" name="id" value="{{note.id}}"/>
+          <input type="hidden" name="titulo" value="{{note.title}}"/>
           <button type="submit" class="btn-delete">
             <img src="{% static 'notes/img/lixo.png' %}" class="lixo"/>
           </button>

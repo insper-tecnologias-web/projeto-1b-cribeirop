@@ -15,25 +15,13 @@ def index(request):
             # TAREFA: Utilize o title e content para criar um novo Note no banco de dados
             return redirect('index')
         elif request.POST.get("verb") == "delete":
-            # title = request.POST.get('titulo')
-            # for note in Note.objects.all():
-            #     if note.title == title:
-            #         note.delete()
-            #         # db.delete(note.id)
-            #         return redirect('index')
-            id = request.POST.get('id')
+            title = request.POST.get('titulo')
             for note in Note.objects.all():
-                if note.id == id:
+                if note.title == title:
                     note.delete()
                     # db.delete(note.id)
-                    return redirect('index')
-            # id = request.POST.get('id')
-            # note = Note.objects.get(id=id)
-            # note.delete()
-            # # db.delete(note.id)
-            # return redirect('index')
+                    return redirect('index')            
             
     else:
         all_notes = Note.objects.all()
-        quantidade = len(all_notes)
-        return render(request, 'notes/index.html', {'notes': all_notes, 'quantidade': quantidade})
+        return render(request, 'notes/index.html', {'notes': all_notes})
