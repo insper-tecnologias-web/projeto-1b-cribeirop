@@ -35,10 +35,15 @@ def index(request):
 def update(request):
     if request.method == 'POST':
         id = request.POST.get('id')
-        for note in Note.objects.all():
-            if note.id == id:
-                note = Note(title=request.POST.get('titulo'), content=request.POST.get('detalhes'))
-                note.save()
-                return redirect('index')  
+        note = Note.objects.filter(id=id)
+        note.update(title=request.POST.get('titulo'), content=request.POST.get('detalhes'))
+        # for note in Note.objects.all():
+        #     if note.id == id:
+        # title = request.POST.get('titulo')
+        # content = request.POST.get('detalhes')
+        # note = Note(title=title, content=content)
+        # note.save()
+        return redirect('index')  
     else:
-        return render(request, 'notes/edit.html')
+        all_notes = Note.objects.all()
+        return render(request, 'notes/edit.html', {'notes': all_notes})

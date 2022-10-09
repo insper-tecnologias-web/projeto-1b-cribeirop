@@ -9,9 +9,9 @@
     <form class="form-card" method="post" action="{% url 'update' %}">
       {% csrf_token %}
       <input type="hidden" name="verb" value="update"/>
-      <input class="form-card-title" type="text" name="titulo" value={{note.title}}/>
-      <input class="autoresize" type="text" name="detalhes" value="{{note.content}}"/>   
       <input type="hidden" name="id" value={{note.id}}/>  
+      <input class="form-card-title" type="text" name="titulo" value={{note.title}}/>
+      <input class="autoresize" type="text" name="detalhes" value={{note.content}}/>   
       <button class="btn" type="submit">Salvar</button>
     </form>
 </main>
