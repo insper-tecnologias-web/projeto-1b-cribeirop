@@ -28,7 +28,15 @@
         </form>
       </div>
       <div class="card-main">
-        <p>{{note.content}}</p>
+        <p class="card-content">{{note.content}}</p>
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="verb" value="update"/>
+          <input type="hidden" name="titulo" value="{{note.title}}"/>
+          <button type="submit" class="btn-update">
+            <img src="{% static 'notes/img/pen.png' %}" class="pen"/>
+          </button>
+        </form>
       </div>
     </div>
     {% endfor %}
