@@ -32,9 +32,9 @@ def index(request):
         all_notes = Note.objects.all()
         return render(request, 'notes/index.html', {'notes': all_notes})
 
-def update(request):
+def update(request,id):
     if request.method == 'POST':
-        id = request.POST.get('id')
+        # id = request.POST.get('id')
         note = Note.objects.filter(id=id)
         note.update(title=request.POST.get('titulo'), content=request.POST.get('detalhes'))
         # for note in Note.objects.all():
