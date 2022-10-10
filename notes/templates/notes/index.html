@@ -35,10 +35,12 @@
           <input type="hidden" name="verb" value="update"/>
           <input type="hidden" name="titulo" value="{{note.title}}"/> -->
           <!-- <button type="submit" class="btn-update"> -->
-        <input type="hidden" name="id" value="{{note.id}}"/>
-        <a href="{% url 'update' %}" class="btn-update">
-          <img src="{% static 'notes/img/pen.png' %}" class="pen"/>
-        </a>
+        <!-- <div method="post"> -->
+          <input type="hidden" name="id" value="{{note.id}}"/>
+          <a href="{% url 'update-{{note.id}}' %}" class="btn-update">
+            <img src="{% static 'notes/img/pen.png' %}" class="pen"/>
+          </a>
+        <!-- </div> -->
           <!-- </button> -->
         <!-- </form> -->
       </div>
